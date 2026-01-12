@@ -42,7 +42,7 @@ class КлассРепозитоия:
             toy["description"] = description
         return toy
 
-    def удаление(self, toy_id: int):
+    def удаление(self, toy_id: int): # перезаписываем массив и игнорируем toy_id
         self.toys = [t for t in self.toys if t["id"] != toy_id]
 
 ЭкземплярРепозитория = КлассРепозитоия()
@@ -83,6 +83,7 @@ def удаление(toy_id: int):
 
 Приложение.mount("/", StaticFiles(directory="static", html=True), name="static")
 uvicorn.run(Приложение, host="127.0.0.1", port=8000)
+
 
 
 
