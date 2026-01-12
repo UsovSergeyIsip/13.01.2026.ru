@@ -17,7 +17,7 @@ class КлассРепозитоия:
         return None
 
     def добавление(self, locomotive_number: int, car_count: int, material: str, description: str):
-        toy = {
+        toy = { # словарь
             "id": self.next_id,
             "locomotive_number": locomotive_number,
             "car_count": car_count,
@@ -83,5 +83,6 @@ def удаление(toy_id: int):
 
 Приложение.mount("/", StaticFiles(directory="static", html=True), name="static")
 uvicorn.run(Приложение, host="127.0.0.1", port=8000)
+
 
 
