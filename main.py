@@ -69,7 +69,7 @@ def получение_по_айди(toy_id: int):
 @Приложение.post("/api/update/{toy_id}") 
 def обновление(toy_id: int, req: dict):
     return ЭкземплярРепозитория.обновление(
-        toy_id,
+        toy_id, # если в запросе новое значение не пустое то оно запишется иначе ставится None
         locomotive_number=int(req.get("locomotive_number")) if req.get("locomotive_number") is not None else None,
         car_count=int(req.get("car_count")) if req.get("car_count") is not None else None,
         material=str(req.get("material")) if req.get("material") is not None else None,
@@ -83,6 +83,7 @@ def удаление(toy_id: int):
 
 Приложение.mount("/", StaticFiles(directory="static", html=True), name="static")
 uvicorn.run(Приложение, host="127.0.0.1", port=8000)
+
 
 
 
